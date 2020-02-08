@@ -3,6 +3,7 @@ package com.example.systemhacks2020proj;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EventManager event = EventManager.getInstance();
+    EventManager events = EventManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.MyToolbar);
         setSupportActionBar(toolbar);
-        populateListView();
+        //events.add(new Event("fuck", "this", "shit", 23));
+        populateListView(events);
         setupAddBtn();
 
     }
@@ -37,29 +39,39 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = AddEventActivity.addEvent(MainActivity.this);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
 
     }
 
-    private void populateListView(){
-        ArrayList<Event> eventList = new ArrayList<>();
+    //displays list on current lenses in main screen
+    private void populateListView(EventManager events) {
+        ArrayList<Event> eventlist = new ArrayList<>();
 
         // Load list into separate list using getIndex.
-        for (int i = 0; i < event.eventSize(); i++) {
-            eventList.add(event.getIndex(i));
+        for (int i = 0; i < events.eventSize(); i++) {
+            eventlist.add(events.getIndex(i));
         }
 
         ArrayAdapter<Event> adapter = new ArrayAdapter<Event>(
                 this,
                 R.layout.eventlistview,
-                eventList);
+                eventlist);
         ListView list = findViewById(R.id.EventListView);
         list.setAdapter(adapter);
-
-
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("result");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                recreate();
+            }
+        }
+    }
 }

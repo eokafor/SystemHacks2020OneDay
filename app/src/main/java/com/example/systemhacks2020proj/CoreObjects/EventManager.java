@@ -35,6 +35,6 @@ public class EventManager implements Iterable<Event>{
     }
     @Override
     public Iterator<Event> iterator() {
-        return null;
+        return eventList.iterator();
     }
 }
