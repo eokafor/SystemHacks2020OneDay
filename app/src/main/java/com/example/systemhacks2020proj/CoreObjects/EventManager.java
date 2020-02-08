@@ -21,6 +21,11 @@ public class EventManager implements Iterable<Event>{
     public int eventSize(){
         return eventList.size();
     }
+
+    public Event getIndex(int i){
+        return eventList.get(i);
+
+    }
     @Override
     public Iterator<Event> iterator() {
         return null;
