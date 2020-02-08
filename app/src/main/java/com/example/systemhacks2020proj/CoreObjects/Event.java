@@ -46,6 +46,9 @@ public class Event {
     public void setMoneyOwed(double moneyOwed) {
         this.moneyOwed = moneyOwed;
     }
-
+    @Override
+    public String toString(){
+        return (eventName + " " + creator + " " + date + " " + moneyOwed + "\n");
+    }
 
 }
