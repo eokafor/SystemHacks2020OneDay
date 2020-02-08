@@ -18,9 +18,16 @@ public class EventManager implements Iterable<Event>{
         return instance;
     }
 
+
+
     public int eventSize(){
         return eventList.size();
     }
+
+    public void add(Event event) {
+        eventList.add(event);
+    }
+
 
     public Event getIndex(int i){
         return eventList.get(i);
