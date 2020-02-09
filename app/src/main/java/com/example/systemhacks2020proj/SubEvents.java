@@ -23,7 +23,7 @@ import java.util.Iterator;
 
 public class SubEvents extends AppCompatActivity {
     ArrayList<Event> subEventList = new ArrayList<>();
-    int Global_Position_Sub;
+    static int Global_Position_Sub;
     private SubEventManager event;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

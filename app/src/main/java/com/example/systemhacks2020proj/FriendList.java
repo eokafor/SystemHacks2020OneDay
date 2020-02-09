@@ -32,7 +32,6 @@ public class FriendList extends AppCompatActivity {
         myDialog = new Dialog(this);
 
         friendbutton = findViewById(R.id.addfriendbutton);
-
         friendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +66,27 @@ public class FriendList extends AppCompatActivity {
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
+
+    public void ShowPopup2(View v) {
+        TextView txtclose;
+
+        myDialog.setContentView(R.layout.custompopup2);
+        txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
+
+
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });
+
+
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
+    }
+
+
     public static Intent addFriend(Context context){
         return new Intent(context, FriendList.class);
     }
