@@ -1,5 +1,11 @@
 package com.example.systemhacks2020proj.CoreObjects;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import androidx.annotation.NonNull;
+
+import com.example.systemhacks2020proj.R;
+import com.example.systemhacks2020proj.SubEvents;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,8 +24,6 @@ public class EventManager implements Iterable<Event>{
         return instance;
     }
 
-
-
     public int eventSize(){
         return eventList.size();
     }
@@ -28,13 +32,22 @@ public class EventManager implements Iterable<Event>{
         eventList.add(event);
     }
 
-
     public Event getIndex(int i){
         return eventList.get(i);
 
     }
+
+    public void remove(int index){
+        eventList.remove(index);
+    }
+
     @Override
     public Iterator<Event> iterator() {
         return eventList.iterator();
     }
+
+
+
+
+
 }

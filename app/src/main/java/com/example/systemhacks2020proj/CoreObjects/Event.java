@@ -14,6 +14,8 @@ public class Event {
         this.moneyOwed = moneyOwed;
     }
 
+
+
     //getters and setters
     public String getEventName() {
         return eventName;
@@ -46,9 +48,12 @@ public class Event {
     public void setMoneyOwed(double moneyOwed) {
         this.moneyOwed = moneyOwed;
     }
+
     @Override
     public String toString(){
-        return (eventName + " " + creator + " " + date + " " + moneyOwed + "\n");
+        return (eventName + " " + "\n"
+                + "Created By: " + creator  + " "+ "\n" + date
+                  + " " + "\n" + "Total: " + moneyOwed );
     }
 
 }
