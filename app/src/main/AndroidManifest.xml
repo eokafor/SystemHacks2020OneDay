@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddEventActivity"></activity>
-
-        <activity android:name=".ExpensesActivity"></activity>
+        <activity android:name=".add_friend"></activity>
+        <activity android:name=".FriendList" />
+        <activity android:name=".AddEventActivity" />
+        <activity android:name=".ExpensesActivity" />
         <activity android:name=".SubEvents" />
         <activity android:name=".signIn">
             <intent-filter>

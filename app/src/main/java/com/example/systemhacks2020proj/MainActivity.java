@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.systemhacks2020proj.CoreObjects.Event;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         populateListView(event);
         registerClickCallback();
         setupAddBtn();
+        setupFriendBtn();
 
     }
     //to remember which lens was selected
@@ -64,10 +66,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-
-
     }
 
+
+    private void setupFriendBtn(){
+        Button btn = findViewById(R.id.friends);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FriendList.class);
+                startActivity(intent);
+            }
+        });
+    }
     private void populateListView(EventManager event){
         ArrayList<Event> eventlist = new ArrayList<>();
 
@@ -98,4 +109,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }

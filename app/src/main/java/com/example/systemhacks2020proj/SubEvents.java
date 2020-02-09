@@ -7,11 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.systemhacks2020proj.CoreObjects.Event;
 import com.example.systemhacks2020proj.CoreObjects.EventManager;
+import com.example.systemhacks2020proj.CoreObjects.SubEvent;
 import com.example.systemhacks2020proj.CoreObjects.SubEventManager;
 import com.example.systemhacks2020proj.CoreObjects.SubEventTextUI;
 
@@ -20,7 +23,7 @@ import java.util.Iterator;
 
 public class SubEvents extends AppCompatActivity {
     ArrayList<Event> subEventList = new ArrayList<>();
-    int get_global_int = MainActivity.Global_Position;
+    int Global_Position_Sub;
     private SubEventManager event;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +32,34 @@ public class SubEvents extends AppCompatActivity {
         event = SubEventManager.getInstance();
         new SubEventTextUI(event);
         populateListView(event);
+        setupExpensesPage();
     }
 
 
     public static Intent addSubEvent(Context context){
-        return new Intent(context, AddEventActivity.class);
+        return new Intent(context, SubEvents.class);
     }
     public static Intent addSubEvent(){
         return new Intent();
     }
+
+    public void setupExpensesPage(){
+        ListView list = findViewById(R.id.SubEventListView);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                Global_Position_Sub = position;
+
+                // Start Activity
+                Intent intent = ExpensesActivity.addExpenses(SubEvents.this);
+                startActivityForResult(intent, 1);
+                Global_Position_Sub = position;
+            }
+        });
+
+    }
+
 
 
 
