@@ -13,6 +13,7 @@
         <activity android:name=".FriendList" />
         <activity android:name=".AddEventActivity" />
         <activity android:name=".ExpensesActivity" />
+        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".SubEvents" />
         <activity android:name=".signIn">
             <intent-filter>
