@@ -25,8 +25,11 @@ public class signIn extends AppCompatActivity {
 
         email = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
-        login = (Button) findViewById(R.id.login);
+        login = (Button) findViewById(R.id.btnLogin);
         info = (TextView) findViewById(R.id.textView);
+
+
+        login.setEnabled(true);
 
 
         login.setOnClickListener(new View.OnClickListener() {
